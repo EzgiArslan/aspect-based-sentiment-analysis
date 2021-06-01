@@ -1,0 +1,12 @@
+stanza==1.2
+nltk==3.6.2
+reach==3.4.7
+gensim==4.0.1
+git+https://github.com/emres/turkish-deasciifier.git
+scikit-learn==0.24.2
+plotly==4.14.3
+numpy==1.20.3
+pandas==1.2.4
+simpletransformers==0.61.6
+scikit-multilearn==0.2.0
+st-annotated-text==1.1.0

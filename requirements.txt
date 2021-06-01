@@ -1,3 +1,0 @@
-trnlp==0.2.3a0
-Turkish-Deasciifier==0.1
-NlpToolkit-MorphologicalDisambiguation==1.0.10

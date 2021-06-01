@@ -1,1 +1,10 @@
+.idea/
+__pycache__/
+cache_dir
 venv/
+embeddings/
+!embeddings/README.md
+aspect_classification_model/
+aspect_extraction_model/
+polarity_detection_model/
+runs/
