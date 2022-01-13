@@ -14,13 +14,14 @@ from collections import Counter
 # Other libraries
 import pandas as pd
 import numpy as np
+import torch
 
 # Evaluation
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 from skmultilearn.utils import measure_per_label
 from scipy.sparse import csr_matrix
 
-
+CUDA = torch.cuda.is_available()
 def aspect_extraction_with_cat(sentences, labels, corpus, nouns, vector_size=300, verbose=False):
     """
     Aspect extraction with cat (https://github.com/clips/cat)
@@ -127,7 +128,7 @@ def bert_multiclass_classification(train_df, model_args=None, output_path="multi
 
     model = ClassificationModel("bert",
                                 "dbmdz/bert-base-turkish-cased",
-                                use_cuda=True,
+                                use_cuda=CUDA,
                                 args=model_args,
                                 num_labels=train_df.labels.nunique())
 
@@ -166,7 +167,7 @@ def bert_multilabel_classification(train_df, model_args=None, output_path="multi
 
     model = MultiLabelClassificationModel("bert",
                                           "dbmdz/bert-base-turkish-cased",
-                                          use_cuda=True,
+                                          use_cuda=CUDA,
                                           args=model_args,
                                           num_labels=len(train_df.labels[0]))
 
@@ -208,7 +209,7 @@ def bert_ner_model(train_df, tags, model_args=None, output_path="ner_model"):
     model = NERModel("bert",
                      "dbmdz/bert-base-turkish-cased",
                      labels=tags,
-                     use_cuda=True,
+                     use_cuda=CUDA,
                      args=model_args)
 
     model.train_model(train_df)
